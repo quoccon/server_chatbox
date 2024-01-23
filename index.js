@@ -10,6 +10,16 @@ const PORT = 1906;
 const server = http.createServer(app);
 const io = socketIo(server);
 
+io.on('connection',(socket) => {
+    console.log("User connect");
+    socket.on('userId',(userId) => {
+        console.log('Connect with userId :' ,userId);
+    })
+
+    socket.on('disconnect',() => {
+        console.log('User disconnect');
+    });
+});
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));

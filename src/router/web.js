@@ -21,6 +21,9 @@ const upload = multer({ storage: storage });
 const initWebRouter = (app) => {
     router.post('/signup/api',upload.single('profileImage'),userApi.signUp);
     router.post('/login/api',userApi.login);
+    router.post('/api/addContacts',userApi.addFriends);
+    router.get('/api/getallUser',userApi.getAllUser);
+    router.get('/api/findUser',userApi.findUser);
     return app.use('/',router);
 }
 
